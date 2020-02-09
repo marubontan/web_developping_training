@@ -1,3 +1,23 @@
 <%- include("partials/header"); -%>
 <link rel="stylesheet" href="/app.css">
-<h1>Test input</h1>
+<div class="container">
+
+    <body>
+        <div class="jumbotron">
+            <p>
+                Photo Gallary
+                <form action="/" method="post">
+                    <input type="text" name="address" placeholder="image address">
+                    <button>registor</button>
+                </form>
+            </p>
+        </div>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                    <% registeredPhotos.forEach(function(address){ %>
+            <div class="col-md-3 col-sm-6">
+                    <img src="<%= address %>">
+            </div>
+                    <% }); %>
+        </div>
+    </body>
+</div>
