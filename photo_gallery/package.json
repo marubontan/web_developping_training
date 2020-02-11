@@ -2,7 +2,7 @@
   "name": "photo_gallery",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "photo_gallery/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
