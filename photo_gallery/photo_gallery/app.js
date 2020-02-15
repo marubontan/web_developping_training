@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:7777")
+mongoose.connect("mongodb://mongodb:27017/photo")
 
 var ImageSchema = new mongoose.Schema({ address: String });
 var Image = mongoose.model("Image", ImageSchema);

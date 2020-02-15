@@ -13,9 +13,9 @@
             </p>
         </div>
         <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-                    <% registeredPhotos.forEach(function(address){ %>
+                    <% registeredPhotos.forEach(function(photo){ %>
             <div class="col-md-3 col-sm-6">
-                    <img src="<%= address %>">
+                    <img src="<%= photo.address %>">
             </div>
                     <% }); %>
         </div>

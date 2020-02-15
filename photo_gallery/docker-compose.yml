@@ -8,18 +8,12 @@ services:
         restart: unless-stopped
         ports:
             - "3000:3000"
-        networks:
-            - app-network
-
-    db:
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+    mongodb:
         image: mongo:3.6.17
-        container_name: db
         restart: unless-stopped
         ports:
-            - "7777:7777"
-        networks:
-            - app-network
-networks:
-    app-network:
-        driver: bridge
-
+            - "27017:27017"
