@@ -1,7 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://mongodb:27017/photo")
+mongoose.Promise = global.Promise
+mongoose.connect("mongodb://mongo:27017:photos", {useNewUrlParser: true})
 
 var ImageSchema = new mongoose.Schema({ address: String });
 var Image = mongoose.model("Image", ImageSchema);
@@ -15,7 +16,7 @@ app.set("view engine", "ejs");
 
 
 app.get("/", (req, res) => {
-    Image.find({}, (err, images)=>{
+    Image.find({}, (err, images) => {
         if (err) throw err;
         res.render("home", { registeredPhotos: images });
     });
@@ -30,7 +31,7 @@ app.listen(3000, () => {
     console.log("App started");
 })
 
-var saveToDB = function(address){
+var saveToDB = function (address) {
     var newImage = new Image({ address: address });
     newImage.save((err, image) => {
         if (err) {
