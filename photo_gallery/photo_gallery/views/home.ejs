@@ -13,11 +13,16 @@
             </p>
         </div>
         <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-                    <% registeredPhotos.forEach(function(photo){ %>
+            <% registeredImages.forEach(function(image){ %>
             <div class="col-md-3 col-sm-6">
-                    <img src="<%= photo.address %>">
+                <div class="thumbnail">
+                    <img src="<%= image.address %>">
+                    <p>
+                        <a href="detail/<%= image._id %>" class="btn btn-primary">Detail</a>
+                    </p>
+                </div>
             </div>
-                    <% }); %>
+            <% }); %>
         </div>
     </body>
 </div>

@@ -11,5 +11,7 @@ services:
     mongo:
         container_name: photos
         image: mongo
+        volumes:
+            - .:/app
         ports:
             - "27017:27017"
