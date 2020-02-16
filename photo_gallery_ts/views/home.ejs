@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/app.css">
+<div class="container">
+
+    <body>
+        <div class="jumbotron">
+            <p>
+                Photo Gallary
+                <form action="/" method="post">
+                    <input type="text" name="address" placeholder="image address">
+                    <button>registor</button>
+                </form>
+            </p>
+        </div>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                    <% registeredPhotos.forEach(function(image){ %>
+            <div class="col-md-3 col-sm-6">
+                    <img src="<%= image.address %>">
+            </div>
+                    <% }); %>
+        </div>
+    </body>
+</div>
