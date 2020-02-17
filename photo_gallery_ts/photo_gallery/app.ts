@@ -1,12 +1,13 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+import {Request, Response} from "express"
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 mongoose.connect("mongodb://mongo:27017:photos", { useNewUrlParser: true })
 
-var ImageSchema = new mongoose.Schema({ address: String });
-var Photo = mongoose.model("Image", ImageSchema);
+const ImageSchema = new mongoose.Schema({ address: String });
+const Photo = mongoose.model("Image", ImageSchema);
 
-var app = express();
+const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -14,14 +15,14 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 
 
-app.get("/", (_: any, res: any) => {
+app.get("/", (_: Request, res: Response) => {
     Photo.find({}, (err: Error, photos: any) => {
         if (err) throw err;
         res.render("home", { registeredImages: photos });
     });
 })
 
-app.get("/detail/:id", (req: any, res: any) => {
+app.get("/detail/:id", (req: Request, res: Response) => {
     Photo.findById(req.params.id, (err: Error, foundImage: any) => {
         if (err) {
             throw err;
@@ -31,14 +32,14 @@ app.get("/detail/:id", (req: any, res: any) => {
     })
 })
 
-app.post("/", (req: any, res: any) => {
+app.post("/", (req: Request, res: Response) => {
     saveToDB(req.body.address);
     res.redirect("/");
 })
 
 
-var saveToDB = function (address: String) {
-    var newImage = new Photo({ address: address });
+const saveToDB = function (address: String) {
+    const newImage = new Photo({ address: address });
     newImage.save((err: Error, _: any) => {
         if (err) {
             throw err;
