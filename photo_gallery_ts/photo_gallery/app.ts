@@ -2,10 +2,12 @@ import {Request, Response} from "express"
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://mongo:27017:photos", { useNewUrlParser: true })
+let Photo = require("./model");
+const seedDB = require("./seed")
 
-const ImageSchema = new mongoose.Schema({ address: String });
-const Photo = mongoose.model("Image", ImageSchema);
+
+mongoose.connect("mongodb://mongo:27017:photos", { useNewUrlParser: true })
+seedDB();
 
 const app = express();
 app.use(express.static("public"));
