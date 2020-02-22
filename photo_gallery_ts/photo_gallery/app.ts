@@ -1,8 +1,8 @@
 import {Request, Response} from "express"
+import {Photo} from "./model"
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-let Photo = require("./model");
 const seedDB = require("./seed")
 
 
