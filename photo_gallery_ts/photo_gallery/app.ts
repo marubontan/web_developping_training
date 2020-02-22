@@ -1,9 +1,9 @@
-import {Request, Response} from "express"
-import {Photo} from "./model"
+import {Request, Response} from "express";
+import {Photo} from "./model";
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const seedDB = require("./seed")
+const seedDB = require("./seed");
 
 
 mongoose.connect("mongodb://mongo:27017:photos", { useNewUrlParser: true })
@@ -25,7 +25,7 @@ app.get("/", (_: Request, res: Response) => {
 })
 
 app.get("/detail/:id", (req: Request, res: Response) => {
-    Photo.findById(req.params.id, (err: Error, foundImage: any) => {
+    Photo.findById(req.params.id).populate("comments").exec((err: Error, foundImage: any) => {
         if (err) {
             throw err;
         } else {

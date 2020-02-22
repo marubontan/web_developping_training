@@ -2,4 +2,7 @@
 <link rel="stylesheet" href="/app.css">
 <div class=thumbnail">
     <img src="<%= image.address %>">
+    <% image.comments.forEach((comment) => { %>
+        <%= comment.comment %>
+    <% }) %>
 </div>

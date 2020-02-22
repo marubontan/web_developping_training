@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var model_1 = require("./model");
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var seedDB = require("./seed");
 mongoose.connect("mongodb://mongo:27017:photos", { useNewUrlParser: true });
-var ImageSchema = new mongoose.Schema({ address: String });
-var Photo = mongoose.model("Image", ImageSchema);
+seedDB();
 var app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
@@ -13,14 +14,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.set("view engine", "ejs");
 app.get("/", function (_, res) {
-    Photo.find({}, function (err, photos) {
+    model_1.Photo.find({}, function (err, photos) {
         if (err)
             throw err;
         res.render("home", { registeredImages: photos });
     });
 });
 app.get("/detail/:id", function (req, res) {
-    Photo.findById(req.params.id, function (err, foundImage) {
+    model_1.Photo.findById(req.params.id).populate("comments").exec(function (err, foundImage) {
         if (err) {
             throw err;
         }
@@ -34,7 +35,7 @@ app.post("/", function (req, res) {
     res.redirect("/");
 });
 var saveToDB = function (address) {
-    var newImage = new Photo({ address: address });
+    var newImage = new model_1.Photo({ address: address });
     newImage.save(function (err, _) {
         if (err) {
             throw err;
