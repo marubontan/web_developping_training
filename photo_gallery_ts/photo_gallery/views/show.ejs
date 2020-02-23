@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="/app.css">
 <div class=thumbnail">
     <img src="<%= image.address %>">
+    <form action="/detail/<%= image._id %>/comments/new" method="GET">
+        <button>Add Comment</button>
+        
     <% image.comments.forEach((comment) => { %>
     <p><%= comment.comment %></p>
     <% }) %>

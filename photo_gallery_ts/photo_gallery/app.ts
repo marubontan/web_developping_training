@@ -63,6 +63,7 @@ app.post("/detail/:id/comments", (req: Request, res: Response) => {
                     photo.comments.push(comment);
                     photo.save();
                     console.log("comment saved");
+                    res.redirect(`/detail/${req.params.id}`);
                 }
             })
         }
