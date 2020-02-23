@@ -4,6 +4,8 @@ services:
         build: ./
         restart: always
         container_name: app
+        volumes:
+            - .:/photo_gallery
         ports:
             - "3000:3000"
         links:
