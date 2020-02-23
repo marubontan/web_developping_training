@@ -34,6 +34,37 @@ app.post("/", function (req, res) {
     saveToDB(req.body.address);
     res.redirect("/");
 });
+app.get("/detail/:id/comments/new", function (req, res) {
+    model_1.Photo.findById(req.params.id, function (err, photo) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("new.ejs", { photo: photo });
+        }
+    });
+});
+app.post("/detail/:id/comments", function (req, res) {
+    var newComment = new model_1.Comment({ comment: req.body.comment });
+    newComment.save(function (err, comment) {
+        if (err) {
+            throw err;
+        }
+        else {
+            console.log("Saved comment");
+            model_1.Photo.findById(req.params.id, function (photoErr, photo) {
+                if (photoErr) {
+                    throw photoErr;
+                }
+                else {
+                    photo.comments.push(comment);
+                    photo.save();
+                    console.log("comment saved");
+                }
+            });
+        }
+    });
+});
 var saveToDB = function (address) {
     var newImage = new model_1.Photo({ address: address });
     newImage.save(function (err, _) {

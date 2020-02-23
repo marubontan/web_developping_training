@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {Photo} from "./model";
+import {Photo, Comment} from "./model";
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -39,7 +39,37 @@ app.post("/", (req: Request, res: Response) => {
     res.redirect("/");
 })
 
+app.get("/detail/:id/comments/new", (req: Request, res: Response) =>{
+    Photo.findById(req.params.id, (err: Error, photo: any) => {
+        if (err){
+            console.log(err);
+        } else {
+            res.render("new.ejs", {photo: photo});
+        }
+    })
+})
 
+app.post("/detail/:id/comments", (req: Request, res: Response) => {
+    const newComment = new Comment({comment: req.body.comment});
+    newComment.save((err: Error, comment: any) => {
+        if (err){
+            throw err;
+        } else {
+            console.log("Saved comment");
+            Photo.findById(req.params.id, (photoErr: Error, photo: any) => {
+                if (photoErr){
+                    throw photoErr;
+                } else {
+                    photo.comments.push(comment);
+                    photo.save();
+                    console.log("comment saved");
+                }
+            })
+        }
+    })
+
+})
+ 
 const saveToDB = function (address: String) {
     const newImage = new Photo({ address: address });
     newImage.save((err: Error, _: any) => {

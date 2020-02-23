@@ -1,0 +1,13 @@
+<%- include("partials/header"); -%>
+<div class="container">
+    <h1>Add comment</h1>
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/detail/<%= photo._id %>/comments" method="POST">
+        <div class="form-group">
+            <input type="text" name="comment">
+            <button class="btn-lg btn-primary btn-block">Submit</button>
+        </div>
+        </form>
+    </div>
+</div>
+<%- include("partials/footer"); -%>
