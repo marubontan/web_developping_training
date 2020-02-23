@@ -1,4 +1,4 @@
-export {};
+export { };
 const mongoose = require("mongoose");
 
 const ImageSchema = new mongoose.Schema({
@@ -17,5 +17,5 @@ const commentSchema = mongoose.Schema({
 });
 let Comment = mongoose.model("Comment", commentSchema);
 
-export {Photo};
-export {Comment}
+export { Photo };
+export { Comment }
