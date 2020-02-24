@@ -1,18 +1,23 @@
 <%- include("partials/header"); -%>
 <link rel="stylesheet" href="/app.css">
-<div class="leftMargin">
-    <div class="thumbnail" style="margin: 100px">
+<div class="center topMargin">
+    <form action="/" method="GET" class="leftMargin">
+        <button class="btn btn-outline-primary">Back To Top</button>
+    </form>
+    <div class="thumbnail">
         <img class="detailImg" src="<%= image.address %>">
     </div>
-    <form action="/detail/<%= image._id %>/comments/new" method="GET">
-        <button>Add Comment</button>
+    <form action="/detail/<%= image._id %>/comments/new" method="GET" class="leftMargin">
+        <button class="btn btn-outline-primary">Add Comment</button>
     </form>
 
-    <% image.comments.forEach((comment) => { %>
-    <div class="card quoterSize topMargin">
-        <div class="card-body">
-            <p class="card-text"><%= comment.comment %></p>
+    <div class="bottomMargin">
+        <% image.comments.forEach((comment) => { %>
+        <div class="card quoterSize topMargin leftMargin">
+            <div class="card-body">
+                <p class="card-text"><%= comment.comment %></p>
+            </div>
         </div>
+        <% }) %>
     </div>
-    <% }) %>
 </div>
