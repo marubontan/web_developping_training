@@ -1,2 +1,8 @@
+# files
+*.js
+
+# library
 ./node_modules/*
+
+# env
 ./vscode/*
