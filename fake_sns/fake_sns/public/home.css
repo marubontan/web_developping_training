@@ -1,0 +1,18 @@
+.postSize {
+    height: 10%;
+    width: 30%;
+}
+
+.horizontalFlex {
+    display: flex;
+    align-items: flex-start;
+}
+
+.verticalFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontalFlexEnd{
+    align-self: flex-end;
+}
