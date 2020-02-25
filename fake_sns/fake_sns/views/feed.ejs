@@ -1,7 +1,9 @@
-<div>
-    <div class="horizontalFlex">
-        <div>
-            <%= postContent %>
+<div class="horizontalFlex verticalFlex">
+    <% postContents.forEach((content) => { %>
+    <div class="card postSize">
+        <div class="card-body">
+            <%= content.content %>
         </div>
     </div>
+    <% }); %>
 </div>
