@@ -16,3 +16,15 @@
 .horizontalFlexEnd{
     align-self: flex-end;
 }
+
+.withCenter{
+    justify-content: center;
+}
+
+.parent{
+    text-align: center;
+}
+
+.colSize{
+    width: 20%;
+}

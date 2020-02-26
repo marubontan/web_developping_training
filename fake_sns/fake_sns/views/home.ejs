@@ -1,8 +1,13 @@
-<%- include("partials/header") -%>
 <link rel="stylesheet" href="home.css">
 
-<body>
-    <h1>test</h1>
-    <%- include("post") -%>
-    <%- include("feed") -%>
+<body class="parent">
+    <div class="horizontalFlex withCenter">
+        <div>
+            <%- include("left_column") -%>
+        </div>
+        <div>
+            <%- include("post") -%>
+            <%- include("feed") -%>
+        </div>
+    </div>
 </body>
