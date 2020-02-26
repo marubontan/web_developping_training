@@ -1,0 +1,30 @@
+.postSize {
+    height: 10%;
+    width: 30%;
+}
+
+.horizontalFlex {
+    display: flex;
+    align-items: flex-start;
+}
+
+.verticalFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontalFlexEnd{
+    align-self: flex-end;
+}
+
+.withCenter{
+    justify-content: center;
+}
+
+.parent{
+    text-align: center;
+}
+
+.colSize{
+    width: 20%;
+}
