@@ -23,17 +23,16 @@ app.get("/", (_: Request, res: Response) => {
 })
 
 app.post("/", (req: Request, res: Response) => {
-    console.log(req.body.postContent);
     const content: string = req.body.postContent;
     const newPost = new postContent({ "content": content });
     newPost.save((err: Error, _: any) => {
         if (err) throw err;
         console.log("post saved");
-    });
-    postContent.find({}, (err: Error, contents: any) => {
-        if (err) throw err;
-        console.log(contents);
-        res.render("home", { postContents: contents });
+        postContent.find({}, (err: Error, contentDB: any) => {
+            if (err) throw err;
+            console.log(contentDB);
+            res.render("home", { postContents: contentDB });
+        });
     });
 })
 
