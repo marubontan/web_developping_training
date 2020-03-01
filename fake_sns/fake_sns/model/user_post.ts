@@ -4,12 +4,6 @@ import passportLocalMongoose from "passport-local-mongoose"
 const UserSchema = new mongoose.Schema({
     username: String,
     password: String,
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "postContent"
-        }
-    ]
 })
 
 const postContentSchema = new mongoose.Schema({
