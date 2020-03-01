@@ -1,10 +1,19 @@
-import mongoose from "mongoose";
+import mongoose, { PassportLocalSchema } from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose"
+
+const UserSchema = new mongoose.Schema({
+    username: String,
+    password: String,
+})
 
 const postContentSchema = new mongoose.Schema({
     content: String
 })
 
-const postContent = mongoose.model("PostContent", postContentSchema);
+UserSchema.plugin(passportLocalMongoose);
 
-export { postContent };
+const postContent = mongoose.model("PostContent", postContentSchema);
+const User = mongoose.model("User", UserSchema as PassportLocalSchema);
+
+export { User, postContent };
 
