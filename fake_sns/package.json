@@ -1,8 +1,7 @@
 {
   "name": "fake_sns",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "/fake_sns/app.js",
   "scripts": {
     "test": "mocha --require ts-node/register test/**/*.ts"
   },
@@ -35,5 +34,9 @@
   },
   "devDependencies": {
     "ts-node": "^8.6.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "description": ""
 }
