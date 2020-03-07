@@ -1,16 +1,12 @@
 <link rel="stylesheet" href="home.css">
 
-<body class="parent">
-    <div class="horizontalFlex withCenter">
-        <div>
-            <%- include("left_column") -%>
-        </div>
-        <div>
+<body>
+    <div class="design horizontalFlex withCenter">
+        <%- include("left_column") -%>
+        <div class="centerColDesign">
             <%- include("post") -%>
             <%- include("feed") -%>
         </div>
-        <div>
-            <%- include("right_column") -%>
-        </div>
+        <%- include("right_column") -%>
     </div>
 </body>
