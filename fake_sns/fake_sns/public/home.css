@@ -13,18 +13,34 @@
     flex-direction: column;
 }
 
-.horizontalFlexEnd{
+.horizontalFlexEnd {
     align-self: flex-end;
 }
 
-.withCenter{
+.centerColDesign{
+    width: 60%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 5px;
+    border: 2px solid sandybrown;
+
+}
+
+.withCenter {
     justify-content: center;
 }
 
-.parent{
-    text-align: center;
+.design{
+    background-color: beige;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
-.colSize{
+.colSize {
     width: 20%;
+    margin: 0px;
+    border-radius: 25px;
+    border: 2px solid sandybrown;
 }
